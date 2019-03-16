@@ -1,0 +1,21 @@
+.form-group {
+	> label {
+		display: block;
+	}
+}
+
+.form-check {
+	> label {
+		display: inline;
+	}
+}
+
+.tinymce-textarea {
+	display: block;
+	height: 0;
+	margin-left: 20px;
+	margin-top: 40px;
+	opacity: 0;
+	position: absolute;
+	width: 0;
+}
