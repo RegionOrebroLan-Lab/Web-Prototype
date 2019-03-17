@@ -8,6 +8,8 @@
 		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
 	</ItemGroup>
 	<ItemGroup>
+		<Content Remove="BundleConfig.json" />
+		<Content Remove="CompilerConfig.json" />
 		<Content Remove="wwwroot\Scripts\Libraries\ReadMe.md" />
 		<Content Remove="wwwroot\Style\Libraries\ReadMe.md" />
 		<Content Remove="wwwroot\Style\Main.scss" />
@@ -21,6 +23,8 @@
 		<Content Remove="wwwroot\Style\Parts\Variables.scss" />
 	</ItemGroup>
 	<ItemGroup>
+		<None Include="BundleConfig.json" />
+		<None Include="CompilerConfig.json" />
 		<None Include="wwwroot\Scripts\Libraries\ReadMe.md" />
 		<None Include="wwwroot\Style\Libraries\ReadMe.md" />
 		<None Include="wwwroot\Style\Main.scss" />
