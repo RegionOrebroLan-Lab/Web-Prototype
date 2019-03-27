@@ -1,33 +1,40 @@
 ﻿<!DOCTYPE html>
 <html lang="sv">
 	<head>
-		@if(IsSectionDefined("HeadMeta"))
+		@if(IsSectionDefined("HeadContent"))
 		{
-			@RenderSection("HeadMeta")
+			@RenderSection("HeadContent")
 		}
 		else
 		{
-			<partial name="~/Views/Shared/Parts/HeadMeta.cshtml" />
-		}
-		@if(IsSectionDefined("HeadTitle"))
-		{
-			@RenderSection("HeadTitle")
-		}
-		else
-		{
-			<partial name="~/Views/Shared/Parts/HeadTitle.cshtml" />
-		}
-		@if(IsSectionDefined("HeadLink"))
-		{
-			@RenderSection("HeadLink")
-		}
-		else
-		{
-			<partial name="~/Views/Shared/Parts/HeadLink.cshtml" />
-		}
-		@if(IsSectionDefined("AdditionalHeadContent"))
-		{
-			@RenderSection("AdditionalHeadContent")
+			if(IsSectionDefined("HeadMeta"))
+			{
+				@RenderSection("HeadMeta")
+			}
+			else
+			{
+				<partial name="~/Views/Shared/Parts/HeadMeta.cshtml" />
+			}
+			if(IsSectionDefined("HeadTitle"))
+			{
+				@RenderSection("HeadTitle")
+			}
+			else
+			{
+				<partial name="~/Views/Shared/Parts/HeadTitle.cshtml" />
+			}
+			if(IsSectionDefined("HeadLink"))
+			{
+				@RenderSection("HeadLink")
+			}
+			else
+			{
+				<partial name="~/Views/Shared/Parts/HeadLink.cshtml" />
+			}
+			if(IsSectionDefined("AdditionalHeadContent"))
+			{
+				@RenderSection("AdditionalHeadContent")
+			}
 		}
 	</head>
 	<body>
