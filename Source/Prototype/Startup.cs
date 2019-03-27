@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Prototype
 {
@@ -7,13 +7,16 @@ namespace Prototype
 	{
 		#region Methods
 
-		public void Configure(IApplicationBuilder applicationBuilder, IHostingEnvironment hostingEnvironment)
+		public virtual void Configure(IApplicationBuilder applicationBuilder)
 		{
-			if(hostingEnvironment.IsDevelopment())
-				applicationBuilder.UseDeveloperExceptionPage();
-
-			applicationBuilder.UseDefaultFiles();
+			applicationBuilder.UseDeveloperExceptionPage();
 			applicationBuilder.UseStaticFiles();
+			applicationBuilder.UseMvc();
+		}
+
+		public virtual void ConfigureServices(IServiceCollection services)
+		{
+			services.AddMvc().WithRazorPagesRoot("/Views");
 		}
 
 		#endregion

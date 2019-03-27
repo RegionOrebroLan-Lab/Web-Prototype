@@ -1,44 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<Sdk Name="Yarn.MSBuild" Version="1.13.0" />
 	<PropertyGroup>
-		<TargetFramework>netcoreapp2.2</TargetFramework>
 		<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+		<TargetFramework>netcoreapp2.2</TargetFramework>
+		<!-- Change to dev later -->
+		<YarnBuildCommand Condition="'$(Configuration)' == 'Debug'">build</YarnBuildCommand>
+		<YarnBuildCommand Condition="'$(Configuration)' == 'Release'">build</YarnBuildCommand>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.App" />
 		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
 	</ItemGroup>
 	<ItemGroup>
-		<Content Remove="BundleConfig.json" />
-		<Content Remove="CompilerConfig.json" />
-		<Content Remove="wwwroot\Scripts\Libraries\ReadMe.md" />
-		<Content Remove="wwwroot\Style\Libraries\ReadMe.md" />
-		<Content Remove="wwwroot\Style\Main.scss" />
-		<Content Remove="wwwroot\Style\Parts\Alert.scss" />
-		<Content Remove="wwwroot\Style\Parts\Form.scss" />
-		<Content Remove="wwwroot\Style\Parts\Forum.scss" />
-		<Content Remove="wwwroot\Style\Parts\Framework.scss" />
-		<Content Remove="wwwroot\Style\Parts\Miscellaneous.scss" />
-		<Content Remove="wwwroot\Style\Parts\Modal.scss" />
-		<Content Remove="wwwroot\Style\Parts\Pagination.scss" />
-		<Content Remove="wwwroot\Style\Parts\Variables.scss" />
+		<Content Remove="wwwroot\.gitkeep" />
+		<None Include="wwwroot\.gitkeep" />
 	</ItemGroup>
-	<ItemGroup>
-		<None Include="BundleConfig.json" />
-		<None Include="CompilerConfig.json" />
-		<None Include="wwwroot\Scripts\Libraries\ReadMe.md" />
-		<None Include="wwwroot\Style\Libraries\ReadMe.md" />
-		<None Include="wwwroot\Style\Main.scss" />
-		<None Include="wwwroot\Style\Parts\Alert.scss" />
-		<None Include="wwwroot\Style\Parts\Form.scss" />
-		<None Include="wwwroot\Style\Parts\Forum.scss" />
-		<None Include="wwwroot\Style\Parts\Framework.scss" />
-		<None Include="wwwroot\Style\Parts\Miscellaneous.scss" />
-		<None Include="wwwroot\Style\Parts\Modal.scss" />
-		<None Include="wwwroot\Style\Parts\Pagination.scss" />
-		<None Include="wwwroot\Style\Parts\Variables.scss" />
-	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="wwwroot\Style\Icons\" />
-		<Folder Include="wwwroot\Style\Images\" />
-	</ItemGroup>
+	<Target Name="Test" BeforeTargets="YarnBuild">
+		<Message Importance="high" Text="NodeJsExecutablePath = $(NodeJsExecutablePath)" />
+	</Target>
+	<Target Name="CopyArtifactsToApplication" AfterTargets="Build">
+		<Message Importance="high" Text="Copy artifacts to application." />
+	</Target>
 </Project>

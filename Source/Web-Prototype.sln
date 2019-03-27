@@ -12,10 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Settings", "Settings", "{5F30E0C2-AC4B-4343-B2C8-B633039542D5}"
 	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
 		..\.gitignore = ..\.gitignore
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prototype", "Prototype\Prototype.csproj", "{00F338EE-B54C-457A-9B3D-E78C05E01A01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{6CC6385B-F0C2-4DAE-8646-CCAC55BA0B37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,13 +30,17 @@ Global
 		{00F338EE-B54C-457A-9B3D-E78C05E01A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00F338EE-B54C-457A-9B3D-E78C05E01A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00F338EE-B54C-457A-9B3D-E78C05E01A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC6385B-F0C2-4DAE-8646-CCAC55BA0B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC6385B-F0C2-4DAE-8646-CCAC55BA0B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC6385B-F0C2-4DAE-8646-CCAC55BA0B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC6385B-F0C2-4DAE-8646-CCAC55BA0B37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{5F30E0C2-AC4B-4343-B2C8-B633039542D5} = {C974C47C-27D1-43EC-93CE-3A0DF6159512}
 		{240E6FF3-D87E-49F3-BED0-DAE1F338D0D7} = {C974C47C-27D1-43EC-93CE-3A0DF6159512}
+		{5F30E0C2-AC4B-4343-B2C8-B633039542D5} = {C974C47C-27D1-43EC-93CE-3A0DF6159512}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A80D149-CFC6-4452-B803-E4F7EA4D78F7}

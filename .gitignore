@@ -261,7 +261,7 @@ __pycache__/
 *.pyc
 
 # Custom
-Source/Prototype/wwwroot/Scripts/**/*.min.js
-Source/Prototype/wwwroot/Style/**/*.css
-!Source/Prototype/wwwroot/Style/Libraries/*.css
-Source/Prototype/wwwroot/Style/**/*.min.css
+Source/Prototype/wwwroot/Scripts/
+Source/Prototype/wwwroot/Style/
+Source/Prototype/package-lock.json
+Source/Prototype/yarn.lock

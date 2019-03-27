@@ -1,0 +1,56 @@
+{
+	"author": "Region Örebro län, https://regionorebrolan.se",
+	"description": "Web-prototype template",
+	"license": "Unlicense",
+	"name": "@regionorebrolan/web-prototype-template",
+	"version": "0.0.0",
+	"dependencies": {
+		"core-js": "^2.5.5",
+		"js-polyfills": "^0.1.42",
+		"mitt": "^1.1.3",
+		"reset-css": "^4.0.0",
+		"svgxuse": "^1.2.6"
+	},
+	"devDependencies": {
+		"@strt/bricks": "^2.0.0",
+		"eslint": "^5.4.0",
+		"eslint-config-strateg": "^1.0.1",
+		"lint-staged": "^8.0.0",
+		"prettier": "^1.12.1",
+		"prettier-eslint-cli": "^4.7.1",
+		"stylelint": "^9.2.0",
+		"stylelint-config-strateg": "^1.7.0"
+	},
+	"eslintConfig": {
+		"extends": "strateg"
+	},
+	"lint-staged": {
+		"*.js": [
+			"eslint",
+			"stylelint",
+			"prettier-eslint --write",
+			"git add"
+		],
+		"*.scss": [
+			"stylelint",
+			"git add"
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RegionOrebroLan-Lab/Web-Prototype"
+	},
+	"scripts": {
+		"dev": "bricks",
+		"build": "bricks build",
+		"lint": "yarn lint:scripts && yarn lint:styles",
+		"lint:scripts": "eslint src --ext .js; exit 0",
+		"lint:styles": "stylelint \"src/**/*.scss\"; exit 0",
+		"format": "yarn format:js && yarn format:other",
+		"format:js": "prettier-eslint --write \"src/**/*.js\"",
+		"format:other": "prettier --write \"**/*.{md,html,yaml,yml}\""
+	},
+	"stylelint": {
+		"extends": "stylelint-config-strateg"
+	}
+}

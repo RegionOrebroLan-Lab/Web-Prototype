@@ -1,0 +1,21 @@
+.button {
+	@include reset-button;
+	padding: 16px 24px;
+	border-radius: 2px;
+	font-family: map-get($fonts, primary);
+	font-size: 1.4rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: white;
+	background-color: map-get($colors, blue500);
+	transition: background-color 140ms map-get($easings, easeOutCubic);
+
+	&:focus,
+	&:hover {
+		background-color: darken(map-get($colors, blue500), 6%);
+	}
+
+	&:active {
+		background-color: map-get($colors, blue500);
+	}
+}
