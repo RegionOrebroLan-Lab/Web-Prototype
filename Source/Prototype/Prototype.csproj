@@ -3,9 +3,6 @@
 	<PropertyGroup>
 		<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
 		<TargetFramework>netcoreapp2.2</TargetFramework>
-		<!-- Change to dev later -->
-		<YarnBuildCommand Condition="'$(Configuration)' == 'Debug'">build</YarnBuildCommand>
-		<YarnBuildCommand Condition="'$(Configuration)' == 'Release'">build</YarnBuildCommand>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.App" />
@@ -15,10 +12,5 @@
 		<Content Remove="wwwroot\.gitkeep" />
 		<None Include="wwwroot\.gitkeep" />
 	</ItemGroup>
-	<Target Name="Test" BeforeTargets="YarnBuild">
-		<Message Importance="high" Text="NodeJsExecutablePath = $(NodeJsExecutablePath)" />
-	</Target>
-	<Target Name="CopyArtifactsToApplication" AfterTargets="Build">
-		<Message Importance="high" Text="Copy artifacts to application." />
-	</Target>
+	<Import Project="Build\Build.targets" />
 </Project>

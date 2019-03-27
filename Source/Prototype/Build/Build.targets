@@ -1,0 +1,53 @@
+<Project>
+	<PropertyGroup>
+		<!-- Change to dev later -->
+		<YarnBuildCommand Condition="'$(Configuration)' == 'Debug'">build</YarnBuildCommand>
+		<YarnBuildCommand Condition="'$(Configuration)' == 'Release'">build</YarnBuildCommand>
+	</PropertyGroup>
+	<Target Name="EnsureNodeJs" BeforeTargets="PrepareForBuild">
+		<PropertyGroup>
+			<_MSBuildNodeJsDirectoryPattern Condition="Exists('$(MSBuildToolsRoot)')">$(MSBuildToolsRoot.Trim('\'))\**\NodeJs\</_MSBuildNodeJsDirectoryPattern>
+			<_NodeJsFileName>node</_NodeJsFileName>
+			<_NodeJsFileName Condition="$([MSBuild]::IsOsPlatform('Windows'))">$(_NodeJsFileName).exe</_NodeJsFileName>
+			<_OS>win</_OS>
+			<_OS Condition="$([MSBuild]::IsOsPlatform('Linux'))">linux</_OS>
+			<_OS Condition="$([MSBuild]::IsOsPlatform('OSX'))">osx</_OS>
+			<_ProcessorArchitecture>x86</_ProcessorArchitecture>
+			<_ProcessorArchitecture Condition="$(PROCESSOR_ARCHITEW6432.Contains('64'))">x64</_ProcessorArchitecture>
+		</PropertyGroup>
+		<ItemGroup>
+			<_MSBuildNodeJsProcessorArchitectureSpecificPath Include="$(_MSBuildNodeJsDirectoryPattern)$(_OS)-$(_ProcessorArchitecture)\$(_NodeJsFileName)" />
+			<_MSBuildNodeJsPath Include="$(_MSBuildNodeJsDirectoryPattern)$(_NodeJsFileName)" />
+		</ItemGroup>
+		<Exec Command="node --version" ContinueOnError="true" StandardOutputImportance="low">
+			<Output PropertyName="ErrorCode" TaskParameter="ExitCode" />
+		</Exec>
+		<PropertyGroup>
+			<_NodeJsIsInstalled>false</_NodeJsIsInstalled>
+			<_NodeJsIsInstalled Condition="$(ErrorCode) == 0">true</_NodeJsIsInstalled>
+		</PropertyGroup>
+		<PropertyGroup>
+			<NodeJsExecutablePath Condition="!$(_NodeJsIsInstalled)">@(_MSBuildNodeJsProcessorArchitectureSpecificPath)</NodeJsExecutablePath>
+			<NodeJsExecutablePath Condition="!$(_NodeJsIsInstalled) And $(NodeJsExecutablePath) == ''">@(_MSBuildNodeJsPath)</NodeJsExecutablePath>
+		</PropertyGroup>
+		<Error Condition="!$(_NodeJsIsInstalled) And $(NodeJsExecutablePath) == ''" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+	</Target>
+	<Target Name="EnsureNodeModules">
+		<PropertyGroup>
+			<_NodeModulesInstalled>false</_NodeModulesInstalled>
+			<_NodeModulesInstalled Condition="Exists('node_modules/')">true</_NodeModulesInstalled>
+		</PropertyGroup>
+		<Message Condition="!$(_NodeModulesInstalled)" Importance="high" Text=" - Installing node-modules, can take a while..." />
+		<Yarn Command="install" Condition="!$(_NodeModulesInstalled)" />
+	</Target>
+	<Target Name="YarnBuildInformation" BeforeTargets="YarnBuild" Condition="$(YarnBuildCommand) != ''" DependsOnTargets="EnsureNodeModules">
+		<Message Importance="high" Text=" - Yarn: $(YarnBuildCommand)..." />
+	</Target>
+
+
+	<!--
+	<Target Name="CopyArtifactsToApplication" AfterTargets="Build">
+		<Message Importance="high" Text="Copy artifacts to application." />
+	</Target>
+	-->
+</Project>
