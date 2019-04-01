@@ -3,14 +3,11 @@
 	<PropertyGroup>
 		<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
 		<TargetFramework>netcoreapp2.2</TargetFramework>
+		<TypeScriptCompileBlocked>True</TypeScriptCompileBlocked>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.App" />
 		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-	</ItemGroup>
-	<ItemGroup>
-		<Content Remove="wwwroot\.gitkeep" />
-		<None Include="wwwroot\.gitkeep" />
 	</ItemGroup>
 	<Import Project="Build\Build.targets" />
 </Project>

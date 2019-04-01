@@ -1,18 +1,157 @@
 # Web prototype
 
+
+
+https://mattallan.me/posts/modern-javascript-without-a-bundler/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.reddit.com/r/typescript/comments/66qnoj/is_there_a_way_to_build_single_js_file_without/
+
+
+
+
+
+https://medium.com/@vivainio/with-latest-typescript-you-may-not-need-webpack-417d2ef0e773
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://medium.com/@dneimke/add-typescript-to-an-asp-net-core-project-e8f7411e7b58
+https://github.com/dneimke/ConfigureTypeScript
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://github.com/thanhptr/aspnet-core-typescript
+https://github.com/thanhptr/aspnet-core-typescript
+
+
+
+
+
+
+
+
+
+
+https://medium.com/@dneimke/add-typescript-to-an-asp-net-core-project-e8f7411e7b58
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.typescriptlang.org/docs/handbook/asp-net-core.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 https://codingsight.com/using-npm-webpack-and-typescript-to-create-simple-aspnet-core-web-app/
 
 
 
 
 
+https://mattallan.org/posts/modern-javascript-without-a-bundler/
 
 
 
+module: amd
+
+	<script src="https://unpkg.com/almond@0.3.3/almond.js"></script>
+	<script src="~/Scripts/Index.js"></script>
+	<script>
+		require("Scripts/Index");
+	</script>
 
 
+module: system
 
-
+	<script src="https://unpkg.com/systemjs@2.1.1/dist/s.js"></script>
+	<script src="https://unpkg.com/systemjs@2.1.1/dist/extras/named-register.js"></script>
+	<script src="~/Scripts/Index.js"></script>
+	<script>
+		System.import("Scripts/Index");
+	</script>
 
 
 
