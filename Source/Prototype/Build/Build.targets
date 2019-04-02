@@ -1,8 +1,7 @@
 <Project>
 	<PropertyGroup>
-		<!-- Change to dev later -->
-		<YarnBuildCommand Condition="'$(Configuration)' == 'Debug'">debug</YarnBuildCommand>
-		<YarnBuildCommand Condition="'$(Configuration)' == 'Release'">release</YarnBuildCommand>
+		<YarnBuildCommand Condition="'$(Configuration)' == 'Debug'">build-scripts-for-development</YarnBuildCommand>
+		<YarnBuildCommand Condition="'$(Configuration)' == 'Release'">build-scripts-for-production</YarnBuildCommand>
 	</PropertyGroup>
 	<Target Name="EnsureNodeJs" BeforeTargets="PrepareForBuild">
 		<PropertyGroup>
@@ -43,8 +42,6 @@
 	<Target Name="YarnBuildInformation" BeforeTargets="YarnBuild" Condition="$(YarnBuildCommand) != ''" DependsOnTargets="EnsureNodeModules">
 		<Message Importance="high" Text=" - Yarn: $(YarnBuildCommand)..." />
 	</Target>
-
-
 	<!--
 	<Target Name="CopyArtifactsToApplication" AfterTargets="Build">
 		<Message Importance="high" Text="Copy artifacts to application." />

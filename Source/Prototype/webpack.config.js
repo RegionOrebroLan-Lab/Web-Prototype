@@ -1,5 +1,6 @@
 "use strict";
 {
+	var CleanWebpackPlugin = require("clean-webpack-plugin");
 	var outputPath = "wwwroot/Scripts/";
 	var path = require("path");
 
@@ -19,6 +20,9 @@
 			filename: "Index.js",
 			path: path.resolve(process.cwd(), outputPath)
 		},
+		plugins: [
+			new CleanWebpackPlugin()
+		],
 		resolve: {
 			extensions: [".tsx", ".ts", ".js"]
 		}

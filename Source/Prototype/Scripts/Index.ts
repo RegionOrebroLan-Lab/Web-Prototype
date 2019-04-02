@@ -1,3 +1,3 @@
 import "./Modules/Example";
 
-alert("Hej");
+console.log("Index.ts - ended");
