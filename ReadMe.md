@@ -2,6 +2,43 @@
 
 
 
+
+
+
+
+
+
+## SVG-Sprite
+https://github.com/strt/bricks/blob/master/tasks/icons.js
+https://www.npmjs.com/package/webpack-svg-sprite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 https://mattallan.me/posts/modern-javascript-without-a-bundler/
 
 
