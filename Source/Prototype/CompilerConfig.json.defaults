@@ -1,0 +1,21 @@
+{
+	"compilers": {
+		"sass": {
+			"includePath": "node_modules",
+			"indentType": "tab",
+			"indentWidth": 1,
+			"lineFeed": "lf",
+			"outputStyle": "nested",
+			"precision": 5,
+			"relativeUrls": true,
+			"sourceMap": true
+		}
+	},
+	"minifiers": {
+		"css": {
+			"enabled": false,
+			"termSemicolons": true,
+			"gzip": false
+		}
+	}
+}

@@ -7,8 +7,28 @@
 		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Style\Images\.gitkeep" />
+	  <None Remove="Style\Icons\.gitkeep" />
+	  <None Remove="Style\Fonts\.gitkeep" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Style\Images\.gitkeep">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Style\Icons\.gitkeep">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Style\Fonts\.gitkeep">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.App" />
 		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="wwwroot\Style\" />
+	</ItemGroup>
 	<Import Project="Build\Build.targets" />
+	<ProjectExtensions><VisualStudio><UserProperties CompilerConfig_1json_1defaults__JSONSchema="http://json.schemastore.org/2.0.0-csd.2.beta.2018-10-10.json" /></VisualStudio></ProjectExtensions>
 </Project>

@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  cursor: default;
+
+  &::after {
+    display: none;
+
+    @each $breakpoint, $value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        content: '#{$breakpoint}';
+      }
+    }
+  }
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  height: auto;
+  max-width: 100%;
+}
+
+:focus {
+  outline: dotted thin;
+}
+
+:hover,
+:active {
+  outline: 0;
+}
+
+::selection {
+  color: map-get($colors, white);
+  background-color: map-get($colors, black);
+}
