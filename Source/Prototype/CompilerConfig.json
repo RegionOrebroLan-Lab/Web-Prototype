@@ -2,5 +2,23 @@
 	{
 		"inputFile": "Style/Index.scss",
 		"outputFile": "wwwroot/Style/Index.css"
+	},
+	{
+		"inputFile": "Style/Index.scss",
+		"outputFile": "../Application/Style/Site.css",
+		"minify": {
+			"enabled": true,
+			"termSemicolons": false,
+			"gzip": true
+		}
+	},
+	{
+		"inputFile": "wwwroot/Scripts/Index.js",
+		"outputFile": "../Application/Scripts/Site.js",
+		"minify": {
+			"enabled": true,
+			"termSemicolons": false,
+			"gzip": true
+		}
 	}
 ]

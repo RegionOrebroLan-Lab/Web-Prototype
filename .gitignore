@@ -261,6 +261,11 @@ __pycache__/
 *.pyc
 
 # Custom
+Source/Application/Scripts/*
+!Source/Application/Scripts/.gitkeep
+Source/Application/Style/*
+!Source/Application/Style/.gitkeep
+
 Source/Prototype/wwwroot/Scripts/
 Source/Prototype/wwwroot/Style/
 Source/Prototype/package-lock.json

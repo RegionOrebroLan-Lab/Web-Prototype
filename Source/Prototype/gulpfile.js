@@ -1,4 +1,4 @@
-/// <binding AfterBuild="default" Clean="clean" ProjectOpened="watch" />
+/// <binding BeforeBuild="default" Clean="clean" ProjectOpened="watch" />
 "use strict";
 {
 	var del = require("del");
@@ -9,6 +9,7 @@
 	var path = require("path");
 	var webpackStream = require("webpack-stream");
 
+	var applicationDestinationRootDirectory = "../Application";
 	var destinationRootDirectoryName = "wwwroot";
 	var fontsDirectoryName = "Fonts";
 	var iconsDirectoryName = "Icons";
@@ -16,6 +17,7 @@
 	var scriptsDirectoryName = "Scripts";
 	var styleDirectoryName = "Style";
 
+	var applicationSpritesDestinationDirectory = path.join(applicationDestinationRootDirectory, styleDirectoryName, iconsDirectoryName);
 	var fontsDestinationDirectory = path.join(destinationRootDirectoryName, styleDirectoryName, fontsDirectoryName);
 	var fontsSourceDirectory = path.join(styleDirectoryName, fontsDirectoryName);
 	var iconsSourceDirectory = path.join(styleDirectoryName, iconsDirectoryName);
@@ -25,8 +27,7 @@
 	var scriptsSourceDirectory = scriptsDirectoryName;
 	var spritesDestinationDirectory = path.join(destinationRootDirectoryName, styleDirectoryName, iconsDirectoryName);
 	var styleDestinationDirectory = path.join(destinationRootDirectoryName, styleDirectoryName);
-
-
+	
 	function clean() {
 		console.log(`Deleting directory \"${scriptsDestinationDirectory}\"...`);
 		console.log(`Deleting directory \"${styleDestinationDirectory}\"...`);
@@ -40,7 +41,8 @@
 		if (fileSystem.existsSync(fontsDestinationDirectory))
 			del(fontsDestinationDirectory);
 
-		return gulp.src(path.join(fontsSourceDirectory, "**/*")).pipe(gulp.dest(destinationRootDirectoryName));
+		gulp.src(path.join(fontsSourceDirectory, "**/*")).pipe(gulp.dest(destinationRootDirectoryName));
+		return gulp.src(path.join(fontsSourceDirectory, "**/*")).pipe(gulp.dest(applicationDestinationRootDirectory));
 	}
 
 	function images() {
@@ -49,7 +51,8 @@
 		if (fileSystem.existsSync(imagesDestinationDirectory))
 			del(imagesDestinationDirectory);
 
-		return gulp.src(path.join(imagesSourceDirectory, "**/*")).pipe(gulp.dest(destinationRootDirectoryName));
+		gulp.src(path.join(imagesSourceDirectory, "**/*")).pipe(gulp.dest(destinationRootDirectoryName));
+		return gulp.src(path.join(imagesSourceDirectory, "**/*")).pipe(gulp.dest(applicationDestinationRootDirectory));
 	}
 
 	function scripts() {
@@ -94,6 +97,8 @@
 		if (fileSystem.existsSync(spritesDestinationDirectory))
 			del(spritesDestinationDirectory);
 
+		const spriteFileName = "sprite.svg";
+
 		return gulp.src(path.join(iconsSourceDirectory, "**/*.svg"))
 			.pipe(gulpPlumber())
 			.pipe(gulpSvgSrite({
@@ -101,7 +106,7 @@
 					symbol: {
 						dest: "",
 						render: false,
-						sprite: "sprite.svg"
+						sprite: spriteFileName
 					}
 				}
 			}))
@@ -114,7 +119,11 @@
 				log.error("Failed to compile sprite.", errorMessage.toString());
 				this.emit("end");
 			})
-			.pipe(gulp.dest(spritesDestinationDirectory));
+			.pipe(gulp.dest(spritesDestinationDirectory))
+			.on("end", function () {
+				gulp.src(path.join(process.cwd(), spritesDestinationDirectory, spriteFileName))
+					.pipe(gulp.dest(applicationSpritesDestinationDirectory));
+			});
 	}
 
 	function watchFonts() {
