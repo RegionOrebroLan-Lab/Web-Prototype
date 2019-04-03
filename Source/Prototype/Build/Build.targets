@@ -1,7 +1,9 @@
 <Project>
 	<PropertyGroup>
+		<!--
 		<YarnBuildCommand Condition="'$(Configuration)' == 'Debug'">build-scripts-for-development</YarnBuildCommand>
 		<YarnBuildCommand Condition="'$(Configuration)' == 'Release'">build-scripts-for-production</YarnBuildCommand>
+		-->
 	</PropertyGroup>
 	<Target Name="EnsureNodeJs" BeforeTargets="PrepareForBuild">
 		<PropertyGroup>
