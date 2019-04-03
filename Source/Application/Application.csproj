@@ -52,6 +52,7 @@
 		<Content Include="Scripts\Site.js" />
 		<Content Include="Scripts\Site.min.js" />
 		<Content Include="Scripts\Site.min.js.gz" />
+		<Content Include="Style\Icons\sprite.svg" />
 		<Content Include="Style\Images\nara-cancer-logo.svg" />
 		<Content Include="Style\Images\region-orebro-lan-universitetssjukhuset-orebro.png" />
 		<Content Include="Style\Images\regionalt-cancercentrum-uppsala-orebro.png" />
