@@ -38,11 +38,20 @@
 		}
 	</head>
 	<body>
-		<div class="grid -pad -center" style="min-height: 100vh;">
-			<partial name="~/Views/Shared/Parts/Header.cshtml" />
-			@RenderBody()
-			<partial name="~/Views/Shared/Parts/Footer.cshtml" />
-		</div>
-		<partial name="~/Views/Shared/Parts/Scripts.cshtml" />
+		@if (IsSectionDefined("BodyContent"))
+		{
+			@RenderSection("BodyContent")
+		}
+		else
+		{
+			<div class="grid -pad -center" style="min-height: 100vh;">
+				<partial name="~/Views/Shared/Parts/Header.cshtml" />
+				<div class="grid__column -desktop-7">
+					@RenderBody()
+				</div>
+				<partial name="~/Views/Shared/Parts/Footer.cshtml" />
+			</div>
+			<partial name="~/Views/Shared/Parts/Scripts.cshtml" />
+		}
 	</body>
 </html>

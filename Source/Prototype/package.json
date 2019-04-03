@@ -8,15 +8,13 @@
 		"svgxuse": "1.2.6"
 	},
 	"devDependencies": {
-		"clean-webpack-plugin": "2.0.1",
 		"del": "4.1.0",
 		"gulp": "4.0.0",
 		"gulp-plumber": "1.2.1",
 		"gulp-svg-sprite": "1.5.0",
 		"ts-loader": "5.3.3",
 		"typescript": "3.4.1",
-		"webpack": "4.29.6",
-		"webpack-cli": "3.3.0"
+		"webpack-stream": "5.2.1"
 	},
 	"name": "@regionorebrolan/web-prototype-template",
 	"private": true,
@@ -24,15 +22,5 @@
 		"type": "git",
 		"url": "https://github.com/RegionOrebroLan-Lab/Web-Prototype"
 	},
-	"scripts": {
-		"build-scripts-default": "webpack --mode=development --watch",
-		"build-scripts-for-development": "webpack --mode=development",
-		"build-scripts-for-production": "webpack --mode=production"
-	},
-	"version": "0.0.0",
-	"________________________________-vs-binding": {
-		"ProjectOpened": [
-			"build-scripts-default"
-		]
-	}
+	"version": "0.0.0"
 }
